@@ -1,0 +1,20 @@
+{
+"version": "2.0.0",
+"tasks": [
+  {
+    "label": "Run Current LC-3 File",
+    "type": "shell",
+    "command": "lc3as ${file} && lc3sim ${fileDirname}/${fileBasenameNoExtension}.obj",
+    "group": {
+      "kind": "build",
+      "isDefault": true
+    }
+  },
+  {
+    "label": "Run Main LC3",
+    "type": "shell",
+    "command": "lc3as ${workspaceFolder}/main.asm && lc3sim ${workspaceFolder}/main.obj",
+    "group": "build"
+  }
+]
+}

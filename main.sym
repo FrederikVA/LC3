@@ -1,0 +1,9 @@
+// Symbol table
+// Scope level 0:
+//	Symbol Name       Page Address
+//	----------------  ------------
+//	START_PROGRAM     3003
+//	END_PROGRAM       300C
+//	END_MSG           300F
+//	END               3014
+

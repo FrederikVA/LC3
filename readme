@@ -1,0 +1,83 @@
+Environment to easily run and test lc3 assembly.
+
+Remember that its your own responsability to control what you download - and if its safe. 
+
+My setup:
+
+- Visual Studio Code
+VS Code Extensions:
+Just for syntax highlights and small error support. You should find the best match for your use and an extension that still works.
+
+To setup the simulator: I used homebrew (version control for tools). When homebrew is installed, navigate to the commandline and type:
+brew tap dennis97519/lc3tools
+brew install lc3tools
+
+When creating a new program use: .asm or .lc3 and VS Code will handle it just fine. 
+
+Boilerplate for zero out registers on start of program:
+; LC-3 Program Template
+.ORIG x3000
+
+; Clear registers
+AND R0, R0, #0
+AND R1, R1, #0
+AND R2, R2, #0
+AND R3, R3, #0
+AND R4, R4, #0
+AND R5, R5, #0
+AND R6, R6, #0
+AND R7, R7, #0
+
+; Start
+JSR start_program
+HALT
+
+start_program
+    ; Your code here
+    RET
+
+.END
+
+To auto assemble and run in shell. (Whats the json file (tasks.json) is for). If not working, correct json file.
+
+Running current task: (file)
+PC: Ctrl+Shift+B
+MAC: Cmd+Shift+B
+
+Run main program: (whole project)
+type; 'Run Main LC3'
+
+What happens: 
+
+Your main file gets assembled and an .obj file is created to be run in the simulator. (Command line). 
+If setup correctly you should see (lc3sim) instead of your username. That means you are in the simulator. 
+
+gl, hf.
+
+Commands: 
+file <file>           -- file load (also sets PC to start of file)
+
+break ...             -- breakpoint management
+
+continue              -- continue execution
+finish                -- execute to end of current subroutine
+next                  -- execute next instruction (full subroutine/trap)
+step                  -- execute one step (into subroutine/trap)
+
+list ...              -- list instructions at the PC, an address, a label
+dump ...              -- dump memory at the PC, an address, a label
+translate <addr>      -- show the value of a label and print the contents
+printregs             -- print registers and current instruction
+
+memory <addr> <val>   -- set the value held in a memory location
+register <reg> <val>  -- set a register to a value
+
+execute <file name>   -- execute a script file
+
+reset                 -- reset LC-3 and reload last file
+
+quit                  -- quit the simulator
+
+help                  -- print this help
+
+All commands except quit can be abbreviated.
