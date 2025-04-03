@@ -18,17 +18,11 @@ START_PROGRAM
     RET
 
 END_PROGRAM
-    LEA R0, END_MSG  ; Load address of message
-    PUTS             ; Print the string
-    BRnzp END        ; Branch to the end of the program
+    LEA R0, END_MSG
+    PUTS
+    RET
 
+; --- All constants go at the end ---
 END_MSG .STRINGZ "Buy\n"
 
-END
-
 .END
-
-; Run the program: cmd + shift + B
-; Check the output in the console
-; Step through the program typing 'step' in the console
-; Run until halt or end of program by typing 'continue' in the console
